@@ -1,32 +1,37 @@
 package mikera.cljunit;
 
 import java.lang.annotation.Annotation;
+import java.util.List;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.runner.Description;
+import org.junit.runner.RunWith;
 import org.junit.runner.Runner;
 import org.junit.runner.notification.RunNotifier;
 
 import clojure.lang.RT;
 
-
+@RunWith(TestRunner.class)
 public class TestRunner extends Runner {
-	private Runner internalRunner;
+	public static final Description DESCRIPTION = Description.createSuiteDescription("cljunit TestRunner", new Annotation[0]);
 	
-	public TestRunner() {
-		internalRunner=null;
-		//internalRunner = (Runner) RT.var("mikera.test.cljunit", "create-runner").invoke();
+	public TestRunner(Class<?> c) throws Exception {
+		RT.loadResourceScript("mikera/cljunit/core.clj");
 	}
-	
+	 
 	@Override
 	public Description getDescription() {
-		return Description.createSuiteDescription("cljunit TestRunner", new Annotation[0]);
+		return DESCRIPTION;
 	}
 
 	@Override
 	public void run(RunNotifier notifier) {
-		if (internalRunner!=null) {
-			internalRunner.run(notifier);
-		}
+		Description desc=getDescription();
+		
+		RT.var("mikera.cljunit.core", "run-junit-tests").invoke(notifier);
+		notifier.fireTestStarted(desc);
+		notifier.fireTestFinished(desc);
 	}
 
 }

@@ -38,6 +38,7 @@
 				<configuration>
 					<sourceDirectories>
 						<sourceDirectory>src/main/clojure</sourceDirectory>
+						<sourceDirectory>src/main/java</sourceDirectory>
 					</sourceDirectories>
 					<testSourceDirectories>
 						<testSourceDirectory>src/test/clojure</testSourceDirectory>
@@ -83,6 +84,11 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.10</version>
+		</dependency>
+		<dependency>
+			<groupId>bultitude</groupId>
+			<artifactId>bultitude</artifactId>
+			<version>0.1.7</version>
 		</dependency>
 	</dependencies>
 </project>
