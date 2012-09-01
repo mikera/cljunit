@@ -1,10 +1,7 @@
 package mikera.cljunit;
 
 import java.lang.annotation.Annotation;
-import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 import org.junit.runner.Runner;
@@ -32,6 +29,10 @@ public class TestRunner extends Runner {
 		RT.var("mikera.cljunit.core", "run-junit-tests").invoke(notifier);
 		notifier.fireTestStarted(desc);
 		notifier.fireTestFinished(desc);
+	}
+
+	public static void staticInit() {
+		// TODO: initialization
 	}
 
 }
