@@ -18,6 +18,8 @@ Examples below:
 
 ### Testing all Clojure namespaces:    
 
+    import mikera.cljunit.ClojureTest;
+    
     public class ClojureTests extends ClojureTest {
     	// automatically test all Clojure namespaces in classpath
     }
