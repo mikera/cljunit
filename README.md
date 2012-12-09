@@ -1,5 +1,5 @@
-cljunit
-=======
+# cljunit
+
 
 JUnit test integration for Clojure.
 
@@ -11,7 +11,9 @@ JUnit testing facilities.
 
 Include cljunit as a dependency from clojars: (https://clojars.org/net.mikera/cljunit)
 
-Then you can extend one of the cljunit classes to allow JUnit to test your Clojure files as below:
+Then you should extend one of the cljunit classes to allow JUnit to test your Clojure files.
+
+Examples below:
 
 ### Testing a specific namespace:
 
