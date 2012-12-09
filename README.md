@@ -34,6 +34,8 @@ Examples below:
     
 ### Testing a specific subset of Clojure namespaces
 
+Working example from vectorz-clj
+
     import mikera.cljunit.ClojureTest;
     
     public class ClojureTests extends ClojureTest {
