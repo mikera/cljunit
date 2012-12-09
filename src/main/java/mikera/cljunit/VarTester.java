@@ -1,14 +1,9 @@
 package mikera.cljunit;
 
-import java.util.Map;
-
-import junit.framework.AssertionFailedError;
-
 import org.junit.runner.Description;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
 
-import clojure.lang.Keyword;
 import clojure.lang.RT;
 import clojure.lang.Var;
 

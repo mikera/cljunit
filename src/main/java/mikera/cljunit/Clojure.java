@@ -2,9 +2,6 @@ package mikera.cljunit;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-
-import clojure.lang.IFn;
 import clojure.lang.Keyword;
 import clojure.lang.RT;
 import clojure.lang.Symbol;
