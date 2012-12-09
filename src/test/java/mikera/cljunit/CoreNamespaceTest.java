@@ -1,6 +1,6 @@
 package mikera.cljunit;
 
-public class SelfNamespaceTest extends NamespaceTest {
+public class CoreNamespaceTest extends NamespaceTest {
 
 	@Override
 	public String namespace() {
