@@ -12,18 +12,22 @@
 (defn assertion-message [m]
   (str "Assertion failed: {:expected " (:expected m) " :actual " (:actual m) "}"))
 
-(defn setup []
-  (alter-var-root #'clojure.test/report 
-                  (fn [old]
-                    (fn [m]
+(def report-fn
+  (fn [m]
                       ;;(println m)              
-                      (swap! *reports* conj m)))))
+                      (swap! *reports* conj m)))
 
-(setup)
+;;(defn setup []
+;;  (alter-var-root #'clojure.test/report 
+;;                  (fn [old]
+;;                    report-fn)))
+;;
+;;(setup)
 
 (defn invoke-test [v]
   (when-let [t v]   ;; (:test (meta v))
-    (binding [*reports* (atom [])]
+    (binding [clojure.test/report report-fn
+              *reports* (atom [])]
       (t)
       ;; (println @*reports*)              
       (doseq [m @*reports*]
