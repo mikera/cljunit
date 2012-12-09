@@ -19,7 +19,7 @@ Then you can extend one of the cljunit classes to allow JUnit to test your Cloju
     
     public class MyNamespaceTest extends NamespaceTest {
     	@Override
-    		public String namespace() {
+    	public String namespace() {
     		return "my.clojure.namespace";
     	}
     }
