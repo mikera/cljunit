@@ -34,5 +34,10 @@
 			<artifactId>bultitude</artifactId>
 			<version>0.1.7</version>
 		</dependency>
+		<dependency>
+			<groupId>org.clojure</groupId>
+			<artifactId>clojure</artifactId>
+			<version>1.4.0</version>
+		</dependency>
 	</dependencies>
 </project>

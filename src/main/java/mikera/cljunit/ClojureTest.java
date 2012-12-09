@@ -1,15 +1,14 @@
 package mikera.cljunit;
 
-import org.junit.Test;
+import java.util.List;
 
+import org.junit.runner.RunWith;
 
-public class ClojureTest extends junit.framework.TestSuite {
-	static {
-		mikera.cljunit.TestRunner.staticInit();
-	}
-	
-	@Test
-	public void testRunner() {
-		// TODO
+@RunWith(ClojureRunner.class)
+public abstract class ClojureTest {
+
+	public List<String> namespaces() {
+		return Clojure.getNamespaces();
+		
 	}
 }
