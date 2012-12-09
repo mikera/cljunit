@@ -6,7 +6,36 @@
 
 (set! *warn-on-reflection* true)
 
+;; intended for binding to capture failures
+(def ^:dynamic *reports* nil)
 
+(defn assertion-message [m]
+  (str "Assertion failed: {:expected " (:expected m) " :actual " (:actual m) "}"))
+
+(defn setup []
+  (alter-var-root #'clojure.test/report 
+                  (fn [old]
+                    (fn [m]
+                      ;;(println m)              
+                      (swap! *reports* conj m)))))
+
+(setup)
+
+(defn invoke-test [v]
+  (when-let [t v]   ;; (:test (meta v))
+    (binding [*reports* (atom [])]
+      (t)
+      ;; (println @*reports*)              
+      (doseq [m @*reports*]
+        (let [type (:type m)]
+          ;;(println m) 
+          (cond 
+            (= :pass type) m
+            (= :fail type) (throw (junit.framework.AssertionFailedError. (assertion-message m)))
+            (= :error type) (throw (:actual m))
+            :else "OK"))))))
+                      
+;; (deftest failing-test (is (= 2 3)))
 (deftest test-in-core
   (testing "In Core"
     (is (= 1 1))))

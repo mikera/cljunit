@@ -6,3 +6,6 @@
 
 (deftest test2
   (is (= 2 2)))
+
+
+;; (deftest failing-test (is (= 2 3)))

@@ -1,11 +1,14 @@
 package mikera.cljunit;
 
+import java.util.Map;
+
 import junit.framework.AssertionFailedError;
 
 import org.junit.runner.Description;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
 
+import clojure.lang.Keyword;
 import clojure.lang.RT;
 import clojure.lang.Var;
 
@@ -22,14 +25,13 @@ public class VarTester {
 	
 	public void runTest(RunNotifier n) {
 		n.fireTestStarted(getDescription());
+		
 		try {
-			testVar.invoke();
-		} catch (AssertionFailedError t) {
-			n.fireTestAssumptionFailed(new Failure(getDescription(), t));
+			Clojure.invokeTest(testVar);
+			n.fireTestFinished(getDescription());
 		} catch (Throwable t) {
 			n.fireTestFailure(new Failure(getDescription(), t));
 		}
-		n.fireTestFinished(getDescription());
 	}
 
 	public Description getDescription() {
