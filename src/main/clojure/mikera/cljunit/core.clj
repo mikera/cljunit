@@ -14,15 +14,8 @@
 
 (def report-fn
   (fn [m]
-                      ;;(println m)              
-                      (swap! *reports* conj m)))
-
-;;(defn setup []
-;;  (alter-var-root #'clojure.test/report 
-;;                  (fn [old]
-;;                    report-fn)))
-;;
-;;(setup)
+     ;;(println m)              
+     (swap! *reports* conj m)))
 
 (defn invoke-test [v]
   (when-let [t v]   ;; (:test (meta v))
