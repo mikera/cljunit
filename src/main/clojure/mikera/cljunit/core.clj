@@ -20,12 +20,18 @@
     (vals (ns-interns ns))))
 
 (defn get-test-var-names [ns-name]
-  (require (symbol ns-name))
-  (map
-      #(str (first %))
-      (filter
-        (fn [[k v]] (:test (meta v)))
-        (ns-interns (symbol ns-name)))))
+  (try
+    (require (symbol ns-name))
+	  (vec (map
+          #(str (first %))
+          (filter
+            (fn [[k v]] (:test (meta v)))
+            (ns-interns (symbol ns-name)))))
+   (catch Throwable t
+     (binding [*out* *err*]
+       (println "Error attempting to get var names!")
+       (.printStackTrace t))
+     [])))
 
 (defn get-test-namespace-names []
   (vec

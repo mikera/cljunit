@@ -7,7 +7,7 @@ import org.junit.runner.Description;
 import org.junit.runner.notification.RunNotifier;
 
 class ClojureTester {
-	public Description d;
+	private Description desc;
 	public List<String> namespaces;
 	
 	@SuppressWarnings("unused")
@@ -15,22 +15,22 @@ class ClojureTester {
 	
 	public ClojureTester(List<String> ns) {
 		this.namespaces=ns;
-		d= Description.createSuiteDescription("Clojure Tests");
+		desc= Description.createSuiteDescription("Clojure Tests");
 	
 		for (String v: namespaces) {
 			NamespaceTester vt=new NamespaceTester(v);
-			d.addChild(vt.getDescription());
+			desc.addChild(vt.getDescription());
 			children.add(vt);
 		}
 	}
 	
 	public Description getDescription() {
-		return d;
+		return desc;
 	}
 	
 	public void runTest(RunNotifier n) {
-		for (NamespaceTester vt:children) {
-			vt.runTest(n);
+		for (NamespaceTester nt:children) {
+			nt.runTest(n);
 		}
 	}
 
