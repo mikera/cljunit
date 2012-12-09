@@ -33,7 +33,7 @@ class NamespaceTester {
 		n.fireTestStarted(d);
 		for (VarTester vt:children) {
 			vt.runTest(n);
-		}
+		}	
 		n.fireTestFinished(d);
 	}
 

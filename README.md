@@ -15,6 +15,13 @@ Then you should extend one of the cljunit classes to allow JUnit to test your Cl
 
 Examples below:
 
+### Testing all Clojure namespaces:    
+
+    public class ClojureTests extends ClojureTest {
+    	// automatically test all Clojure namespaces in classpath
+    }
+    
+
 ### Testing a specific namespace:
 
     import mikera.cljunit.NamespaceTest;
@@ -25,13 +32,7 @@ Examples below:
     		return "my.clojure.namespace";
     	}
     }
-    
-### Testing all Clojure namespaces:    
 
-    public class ClojureTests extends ClojureTest {
-    	// automatically test all Clojure namespaces in classpath
-    }
-    
 ### Testing a specific subset of Clojure namespaces
 
 Working example from vectorz-clj
