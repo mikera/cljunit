@@ -1,11 +1,12 @@
 # cljunit
 
-
 JUnit test integration for Clojure.
 
 The purpose of cljunit is to provide a convenient way to write JUnit tests that test Clojure namespaces. This is
 very useful if, for example, you want to test Clojure code within a Java IDE like Eclipse that has integrated
 JUnit testing facilities.
+
+[![Build Status](https://secure.travis-ci.org/mikera/cljunit.png?branch=master)](https://travis-ci.org/mikera/cljunit)
 
 ## Usage
 
