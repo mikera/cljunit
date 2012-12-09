@@ -13,7 +13,7 @@
 		<connection>scm:git:git@github.com:mikera/${project.artifactId}.git</connection>
 		<url>scm:git:git@github.com:mikera/${project.artifactId}.git</url>
 		<developerConnection>scm:git:git@github.com:mikera/${project.artifactId}.git</developerConnection>
-  	  <tag>HEAD</tag>
+  	  <tag>cljunit-0.1.0</tag>
   </scm>
   	
   	<repositories>

@@ -8,7 +8,7 @@ import org.junit.runners.ParentRunner;
 import org.junit.runners.model.InitializationError;
 
 
-class NamespaceRunner extends ParentRunner<VarTester> {
+public class NamespaceRunner extends ParentRunner<VarTester> {
 	NamespaceTester namespaceTester;
 	
 	public NamespaceRunner(Class<NamespaceTest> testClass) throws InitializationError, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {

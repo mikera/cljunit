@@ -7,7 +7,7 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
 import org.junit.runners.model.InitializationError;
 
-class ClojureRunner extends ParentRunner<NamespaceTester> {
+public class ClojureRunner extends ParentRunner<NamespaceTester> {
 	ClojureTester clojureTester;
 	
 	public ClojureRunner(Class<ClojureTest> testClass) throws InitializationError, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
