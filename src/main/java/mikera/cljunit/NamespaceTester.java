@@ -30,9 +30,11 @@ class NamespaceTester {
 	}
 	
 	public void runTest(RunNotifier n) {
+		n.fireTestStarted(d);
 		for (VarTester vt:children) {
 			vt.runTest(n);
 		}
+		n.fireTestFinished(d);
 	}
 
 }

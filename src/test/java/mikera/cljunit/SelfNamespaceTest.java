@@ -4,7 +4,7 @@ public class SelfNamespaceTest extends NamespaceTest {
 
 	@Override
 	public String namespace() {
-		return "mikera.cljunit.test-main";
+		return "mikera.cljunit.core";
 	}
 	
 }

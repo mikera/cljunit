@@ -17,10 +17,10 @@ class ClojureTester {
 		this.namespaces=ns;
 		desc= Description.createSuiteDescription("Clojure Tests");
 	
-		for (String v: namespaces) {
-			NamespaceTester vt=new NamespaceTester(v);
-			desc.addChild(vt.getDescription());
-			children.add(vt);
+		for (String s: namespaces) {
+			NamespaceTester nt=new NamespaceTester(s);
+			desc.addChild(nt.getDescription());
+			children.add(nt);
 		}
 	}
 	
@@ -29,9 +29,11 @@ class ClojureTester {
 	}
 	
 	public void runTest(RunNotifier n) {
+		n.fireTestStarted(desc);
 		for (NamespaceTester nt:children) {
 			nt.runTest(n);
 		}
+		n.fireTestFinished(desc);
 	}
 
 }
