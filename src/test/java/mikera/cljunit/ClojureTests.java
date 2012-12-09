@@ -3,7 +3,7 @@ package mikera.cljunit;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelfClojureTest extends ClojureTest {
+public class ClojureTests extends ClojureTest {
 	@Override
 	public List<String> namespaces() {
 		@SuppressWarnings("unused")
