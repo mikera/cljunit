@@ -10,7 +10,7 @@ public class SelfClojureTest extends ClojureTest {
 		ArrayList<String> ns=new ArrayList<String>();
 		ns.add("clojure.core");
 		ns.add("mikera.cljunit.test-main");
-		// ns.add("mikera.cljunit.dummy-nonexistent-namespace");
+		ns.add("mikera.cljunit.dummy-nonexistent-namespace");
 		return ns;
 	}
 }
