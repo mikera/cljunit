@@ -26,6 +26,7 @@ class NamespaceTester {
 			}
 		} catch (Throwable t) {
 			t.printStackTrace();
+			throw (t);
 		}
 	}
 	
