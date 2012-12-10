@@ -21,7 +21,7 @@
   (when-let [t v]   ;; (:test (meta v))
     (binding [clojure.test/report report-fn
               *reports* (atom [])]
-      (t)
+      (eval `(~t))
       ;; (println @*reports*)              
       (doseq [m @*reports*]
         (let [type (:type m)]

@@ -25,5 +25,5 @@
 
 (deftest test-expression-info
   (testing "expression "
-    (is (:primitive (expression-info '(+ 2 3))))))
+    (is (expression-info '(+ 2 3)))))
 
