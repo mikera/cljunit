@@ -14,19 +14,14 @@ class NamespaceTester {
 	public ArrayList<VarTester> children=new ArrayList<VarTester>();
 	
 	public NamespaceTester(String ns) {
-		try {
-			this.namespace=ns;
-			d= Description.createSuiteDescription(namespace);
-			Collection<String> testVars=Clojure.getTestVars(namespace);
-			
-			for (String v:testVars) {
-				VarTester vt=new VarTester(namespace,v);
-				d.addChild(vt.getDescription());
-				children.add(vt);
-			}
-		} catch (Throwable t) {
-			t.printStackTrace();
-			throw (t);
+		this.namespace=ns;
+		d= Description.createSuiteDescription(namespace);
+		Collection<String> testVars=Clojure.getTestVars(namespace);
+		
+		for (String v:testVars) {
+			VarTester vt=new VarTester(namespace,v);
+			d.addChild(vt.getDescription());
+			children.add(vt);
 		}
 	}
 	
