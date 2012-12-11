@@ -40,10 +40,12 @@
 (defn ns-for-name [name]
   (namespace (symbol name)))
 
-(defn get-test-vars [ns]
-  (filter
-    (fn [v] (:test (meta v)))
-    (vals (ns-interns ns))))
+(defn get-test-vars 
+  "Gets the vars in a namespace which represent tests, as defined by :test metadata"
+  ([ns]
+    (filter
+      (fn [v] (:test (meta v)))
+      (vals (ns-interns ns)))))
 
 (defn get-test-var-names 
   "Gets the names of all vars for a given namespace name"
@@ -61,15 +63,20 @@
         (.printStackTrace t))
       []))))
 
+;; we need to exclude clojure.parallel, as loading it causes an error if ForkJoin framework not present
 (def DEFAULT-EXCLUDES
   ["clojure.parallel"])
 
-(defn get-namespace-symbols [options]
-  (let [nms (b/namespaces-on-classpath)
-        exclude-list (or (:exludes options) DEFAULT-EXCLUDES)
-        exclude-set (into #{} exclude-list)
-        nms (filter #(not (exclude-set (str %))) nms)]
-    nms))
+(defn get-namespace-symbols 
+  "Gets the symbols defining namespaces on the classpath, subject to options map"
+  ([options]
+    (let [prefix (or (:prefix options) "")
+          exclude-list (or (:exludes options) DEFAULT-EXCLUDES)
+          exclude-set (into #{} exclude-list)
+          nms (b/namespaces-on-classpath)
+          nms (filter #(not (exclude-set (name %))) nms)
+          nms (filter #(.startsWith (name %) prefix) nms)]
+      nms)))
 
 (defn get-test-namespace-names 
   "Return namespace names as strings"
