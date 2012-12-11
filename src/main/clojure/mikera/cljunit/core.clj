@@ -67,7 +67,7 @@
         (require nms)
         (str nms)
         (catch Throwable x
-          nil))))))
+          (throw (RuntimeException. (str "Failed to load namespace:" nms) x))))))))
 
 (defn get-all-test-vars []
   (doseq [nms (b/namespaces-on-classpath)] 
