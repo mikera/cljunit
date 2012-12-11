@@ -6,3 +6,9 @@
   (testing "Core"
     (is (= 1 1))))
 
+(deftest test-namespaces
+  (testing "Core"
+    (let [nms (get-test-namespace-names)
+          nmset (into #{} nms)]
+      (is (nmset "clojure.core")))))
+

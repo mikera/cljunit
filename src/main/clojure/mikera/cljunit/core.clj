@@ -45,37 +45,46 @@
     (fn [v] (:test (meta v)))
     (vals (ns-interns ns))))
 
-(defn get-test-var-names [ns-name]
+(defn get-test-var-names 
+  "Gets the names of all vars for a given namespace name"
+  ([ns-name]
   (try
     (require (symbol ns-name))
-	  (vec (map
-          #(str (first %))
-          (filter
-            (fn [[k v]] (:test (meta v)))
-            (ns-interns (symbol ns-name)))))
-   (catch Throwable t
-     (binding [*out* *err*]
-       (println "Error attempting to get var names!")
-       (.printStackTrace t))
-     [])))
+    (vec (map
+           #(str (first %))
+           (filter
+             (fn [[k v]] (:test (meta v)))
+             (ns-interns (symbol ns-name)))))
+    (catch Throwable t
+      (binding [*out* *err*]
+        (println (str "Error attempting to get var names for namespace [" ns-name "]"))
+        (.printStackTrace t))
+      []))))
 
-(defn get-test-namespace-names []
-  (vec
-    (filter (complement nil?)
-    (for [nms (b/namespaces-on-classpath)] 
-      (try 
-        (require nms)
-        (str nms)
-        (catch Throwable x
-          (throw (RuntimeException. (str "Failed to load namespace:" nms) x))))))))
+(def DEFAULT-EXCLUDES
+  ["clojure.parallel"])
 
-(defn get-all-test-vars []
-  (doseq [nms (b/namespaces-on-classpath)] 
-    (try 
-      (require nms)
-      (catch Throwable x
-        nil)))
-  (mapcat get-test-vars (all-ns)))
+(defn get-namespace-symbols [options]
+  (let [nms (b/namespaces-on-classpath)
+        exclude-list (or (:exludes options) DEFAULT-EXCLUDES)
+        exclude-set (into #{} exclude-list)
+        nms (filter #(not (exclude-set (str %))) nms)]
+    nms))
+
+(defn get-test-namespace-names 
+  "Return namespace names as strings"
+  ([]
+    (get-test-namespace-names nil))
+  ([options]
+	  (vec
+	    (filter (complement nil?)
+		    (for [nms (get-namespace-symbols options)] 
+		      (try 
+		        (require nms)
+		        (str nms)
+		        (catch Throwable x
+		          (throw (RuntimeException. (str "Failed to load namespace:" nms) x)))))))))
+
 
 (defn test-results [test-vars]
   (vec (map
