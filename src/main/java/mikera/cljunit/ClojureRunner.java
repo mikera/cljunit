@@ -13,11 +13,7 @@ public class ClojureRunner extends ParentRunner<NamespaceTester> {
 	public ClojureRunner(Class<ClojureTest> testClass) throws InitializationError, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		super(testClass);
 		
-		try {
-			clojureTester=new ClojureTester(testClass.newInstance().namespaces());
-		} catch (Throwable e) {
-			throw new RuntimeException(e);
-		}
+		clojureTester=new ClojureTester(testClass.newInstance().namespaces());
 	}
 
 	@Override
