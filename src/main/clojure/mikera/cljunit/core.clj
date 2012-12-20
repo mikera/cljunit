@@ -90,7 +90,9 @@
 		        (require nms)
 		        (str nms)
 		        (catch Throwable x
-		          (throw (RuntimeException. (str "Failed to load namespace:" nms) x)))))))))
+		          (throw 
+                   ;;(RuntimeException. (str "Failed to load namespace:" nms) x)               
+                   x))))))))
 
 
 (defn test-results [test-vars]
