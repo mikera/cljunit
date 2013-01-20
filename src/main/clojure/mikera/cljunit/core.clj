@@ -73,9 +73,8 @@
     (let [prefix (or (:prefix options) "")
           exclude-list (or (:exludes options) DEFAULT-EXCLUDES)
           exclude-set (into #{} exclude-list)
-          nms (b/namespaces-on-classpath)
-          nms (filter #(not (exclude-set (name %))) nms)
-          nms (filter #(.startsWith (name %) prefix) nms)]
+          nms (b/namespaces-on-classpath :prefix prefix)
+          nms (filter #(not (exclude-set (name %))) nms)]
       nms)))
 
 (defn get-test-namespace-names 

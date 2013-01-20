@@ -8,7 +8,18 @@ import org.junit.runner.RunWith;
 public abstract class ClojureTest {
 
 	public List<String> namespaces() {
-		return Clojure.getNamespaces();
-		
+		String filter=filter();
+		if (filter==null) {
+			return Clojure.getNamespaces();
+		}
+		return Clojure.getNamespaces(filter);
+	}
+	
+	/**
+	 * Specifies a prefix for namespaces to test, e.g. "my.organisation"
+	 * @return
+	 */
+	public String filter() {
+		return null;
 	}
 }

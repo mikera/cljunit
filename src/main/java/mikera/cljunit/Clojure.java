@@ -1,7 +1,10 @@
 package mikera.cljunit;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import clojure.lang.Keyword;
 import clojure.lang.RT;
 import clojure.lang.Symbol;
@@ -11,6 +14,8 @@ public class Clojure {
 	public static final Var REQUIRE=RT.var("clojure.core", "require");
 	public static final Var META=RT.var("clojure.core", "meta");
 	public static final Keyword TEST_KEY=Keyword.intern("test");
+	public static final Keyword PREFIX=Keyword.intern("prefix");
+
 	static {
 		require("clojure.test");
 		require("mikera.cljunit.core");
@@ -30,6 +35,14 @@ public class Clojure {
 
 	public static List<String> getNamespaces() {
 		return (List<String>) GET_TEST_NAMESPACE_NAMES.invoke();
+	}
+	
+	public static List<String> getNamespaces(String filter) {
+		@SuppressWarnings({ "rawtypes", "unchecked" })
+		Map<Object,Object> hm=new HashMap();
+		hm.put(PREFIX, filter);
+		
+		return (List<String>) GET_TEST_NAMESPACE_NAMES.invoke(hm);
 	}
 
 	public static Object invokeTest(Var testVar) {
