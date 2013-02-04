@@ -35,5 +35,4 @@ class ClojureTester {
 		}
 		n.fireTestFinished(desc);
 	}
-
 }
