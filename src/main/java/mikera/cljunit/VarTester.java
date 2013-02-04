@@ -24,7 +24,7 @@ public class VarTester {
 		String file = meta.get(FILE).toString();
 		String line = meta.get(LINE).toString();
 		
-		desc=Description.createSuiteDescription(ns+"/"+name + " <"+file+":"+line+">");		
+		desc=Description.createSuiteDescription(name + "  <"+file+":"+line+">");		
 	}
 	
 	public void runTest(RunNotifier n) {
