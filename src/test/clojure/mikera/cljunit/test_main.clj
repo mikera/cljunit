@@ -12,3 +12,7 @@
           nmset (into #{} nms)]
       (is (nmset "clojure.core")))))
 
+(deftest failing-assertion
+;;  (is (= 1 2))
+  ) 
+

@@ -10,12 +10,22 @@
 (def ^:dynamic *reports* nil)
 
 (defn assertion-message [m]
-  (str "Assertion failed: {:expected " (:expected m) " :actual " (:actual m) "}"))
+  (str "Assertion failed: {:expected " (:expected m) " :actual " (:actual m) "}"
+       " <" (:file m) ":" (:line m) ">"))
+
+(defn truncate-stacktrace [off-top]
+  (let [st (.getStackTrace (Thread/currentThread))
+        stlen (alength st)
+        st (java.util.Arrays/copyOfRange st (int off-top) stlen)]
+    st))
 
 (def report-fn
   (fn [m]
      ;;(println m)              
-     (swap! *reports* conj m)))
+     (let [m (if (= :fail (:type m))
+               (assoc m :stacktrace (truncate-stacktrace 4))
+               m)] 
+       (swap! *reports* conj m))))
 
 (defn invoke-test [v]
   (when-let [t v]   ;; (:test (meta v))
@@ -25,10 +35,13 @@
       ;; (println @*reports*)              
       (doseq [m @*reports*]
         (let [type (:type m)]
-          ;;(println m) 
           (cond 
             (= :pass type) m
-            (= :fail type) (throw (junit.framework.AssertionFailedError. (assertion-message m)))
+            (= :fail type) 
+              (let [ex (junit.framework.AssertionFailedError. (assertion-message m))]
+                ;; (println m) 
+                (.setStackTrace ex (:stacktrace m)) 
+                (throw ex))
             (= :error type) (throw (:actual m))
             :else "OK"))))))
                       
