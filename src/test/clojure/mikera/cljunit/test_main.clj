@@ -10,7 +10,8 @@
   (testing "Core"
     (let [nms (get-test-namespace-names)
           nmset (into #{} nms)]
-      (is (nmset "clojure.core")))))
+      ;; (println nms)
+      (is (nmset "mikera.cljunit.core")))))
 
 (deftest failing-assertion
 ;;  (is (= 1 2))
