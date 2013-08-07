@@ -99,11 +99,10 @@
 	    (filter (complement nil?)
 		    (for [nms (get-namespace-symbols options)] 
 		      (try 
-		        (require nms)
+		        (require nms) ;; might fail during namespace loading
 		        (str nms)
 		        (catch Throwable x
-		          (throw 
-                   (RuntimeException. (str "Failed to load namespace:" nms) x)))))))))
+		          (throw (RuntimeException. (str "Failed to load namespace:" nms) x)))))))))
 
 
 (defn test-results [test-vars]
