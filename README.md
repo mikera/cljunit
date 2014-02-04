@@ -24,6 +24,18 @@ Examples below:
     	// automatically test all Clojure namespaces in classpath
     }
     
+### Testing all clojure namespaces with a given prefix:    
+
+    import mikera.cljunit.ClojureTest;
+    
+    public class ClojureTests extends ClojureTest {
+    	// filter namespaces with the given prefix
+    	@Override public String filter() {
+    	    return "com.mycompany";
+    	}
+    }
+    
+    
 
 ### Testing a specific namespace:
 
