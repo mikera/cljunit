@@ -18,13 +18,15 @@ Examples below:
 
 ### Testing all Clojure namespaces:    
 
+This is the simplest solution that works for most projects. Just be warned: it will run every Clojure test on the classpath. Which might be a lot if your imported libraries have a lot of tests in them.
+
     import mikera.cljunit.ClojureTest;
     
     public class ClojureTests extends ClojureTest {
     	// automatically test all Clojure namespaces in classpath
     }
     
-### Testing all clojure namespaces with a given prefix:    
+### Testing all Clojure namespaces with a given prefix:    
 
     import mikera.cljunit.ClojureTest;
     
