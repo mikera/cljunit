@@ -32,12 +32,12 @@
 		<dependency>
 			<groupId>bultitude</groupId>
 			<artifactId>bultitude</artifactId>
-			<version>0.2.2</version>
+			<version>0.2.6</version>
 		</dependency>
 		<dependency>
 			<groupId>org.clojure</groupId>
 			<artifactId>clojure</artifactId>
-			<version>1.4.0</version>
+			<version>1.6.0</version>
 		</dependency>
 	</dependencies>
 </project>
