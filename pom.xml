@@ -3,6 +3,7 @@
 	<artifactId>cljunit</artifactId>
 	<groupId>net.mikera</groupId>
 	<version>0.3.2-SNAPSHOT</version>
+	<description>JUnit wrapper for Clojure test code</description>
 
 	<parent>
 		<groupId>net.mikera</groupId>
