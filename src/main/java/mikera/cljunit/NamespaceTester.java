@@ -10,7 +10,6 @@ class NamespaceTester {
 	public Description d;
 	public String namespace;
 	
-	@SuppressWarnings("unused")
 	public ArrayList<VarTester> children=new ArrayList<VarTester>();
 	
 	public NamespaceTester(String ns) {

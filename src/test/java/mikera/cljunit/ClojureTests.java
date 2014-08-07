@@ -6,7 +6,6 @@ import java.util.List;
 public class ClojureTests extends ClojureTest {
 	@Override
 	public List<String> namespaces() {
-		@SuppressWarnings("unused")
 		ArrayList<String> ns=new ArrayList<String>();
 		ns.add("clojure.core");
 		ns.add("mikera.cljunit.test-main");

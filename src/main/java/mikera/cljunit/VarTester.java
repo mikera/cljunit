@@ -17,6 +17,7 @@ public class VarTester {
 	private static Keyword FILE= Keyword.intern("file");
 	private static Keyword LINE= Keyword.intern("line");
 	
+	@SuppressWarnings("unchecked")
 	public VarTester(String ns,String name) {
 		Clojure.require(ns);
 		testVar=RT.var(ns, name);

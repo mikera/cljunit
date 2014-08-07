@@ -10,7 +10,6 @@ class ClojureTester {
 	private Description desc;
 	public List<String> namespaces;
 	
-	@SuppressWarnings("unused")
 	public ArrayList<NamespaceTester> children=new ArrayList<NamespaceTester>();
 	
 	public ClojureTester(List<String> ns) {

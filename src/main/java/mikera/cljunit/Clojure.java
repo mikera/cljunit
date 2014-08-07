@@ -25,6 +25,7 @@ public class Clojure {
 	public static final Var GET_TEST_NAMESPACE_NAMES=RT.var("mikera.cljunit.core", "get-test-namespace-names");
 	public static final Var INVOKE_TEST=RT.var("mikera.cljunit.core", "invoke-test");
 	
+	@SuppressWarnings("unchecked")
 	public static Collection<String> getTestVars(String namespace) {
 		return (Collection<String>) GET_TEST_VAR_NAMES.invoke(namespace);
 	}
@@ -33,12 +34,14 @@ public class Clojure {
 		REQUIRE.invoke(Symbol.intern(ns));
 	}
 
+	@SuppressWarnings("unchecked")
 	public static List<String> getNamespaces() {
 		return (List<String>) GET_TEST_NAMESPACE_NAMES.invoke();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static List<String> getNamespaces(String filter) {
-		@SuppressWarnings({ "rawtypes", "unchecked" })
+		@SuppressWarnings({ "rawtypes"})
 		Map<Object,Object> hm=new HashMap();
 		hm.put(PREFIX, filter);
 		
