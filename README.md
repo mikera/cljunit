@@ -16,6 +16,11 @@ Include cljunit as a dependency from clojars:
 
 Then you should extend one of the cljunit classes to create a JUnit test suite to test your Clojure files.
 
+And that's it: you should now have your Clojure tests nicely wrapped up in JUnit test suites. These have been tested to work in the following situations:
+
+ - Running JUnit tests with Eclipse
+ - Running JUnit tests with Maven
+
 Examples below:
 
 ### Testing all Clojure namespaces:    
