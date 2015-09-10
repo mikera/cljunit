@@ -10,19 +10,40 @@ JUnit testing facilities.
 
 ## Usage
 
-Include cljunit as a dependency from clojars: (https://clojars.org/net.mikera/cljunit)
+Include cljunit as a dependency from clojars:
 
-Then you should extend one of the cljunit classes to allow JUnit to test your Clojure files.
+[![Clojars Project](http://clojars.org/net.mikera/cljunit/latest-version.svg)](http://clojars.org/net.mikera/cljunit)
+
+Then you should extend one of the cljunit classes to create a JUnit test suite to test your Clojure files.
+
+And that's it: you should now have your Clojure tests nicely wrapped up in JUnit test suites. These have been tested to work in the following situations:
+
+ - Running JUnit tests with Eclipse (Run / Run As... / JUnit Test)
+ - Running JUnit tests with Maven (you don't even need the `clojure-maven-plugin` since the regular Maven configuration will automatically run JUnit tests)
 
 Examples below:
 
 ### Testing all Clojure namespaces:    
+
+This is the simplest solution that works for most projects. Just be warned: it will run every Clojure test on the classpath. Which might be a lot if your imported libraries have a lot of tests in them.
 
     import mikera.cljunit.ClojureTest;
     
     public class ClojureTests extends ClojureTest {
     	// automatically test all Clojure namespaces in classpath
     }
+    
+### Testing all Clojure namespaces with a given prefix:    
+
+    import mikera.cljunit.ClojureTest;
+    
+    public class ClojureTests extends ClojureTest {
+    	// filter namespaces with the given prefix
+    	@Override public String filter() {
+    	    return "com.mycompany";
+    	}
+    }
+    
     
 
 ### Testing a specific namespace:
