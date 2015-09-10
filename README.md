@@ -10,9 +10,11 @@ JUnit testing facilities.
 
 ## Usage
 
-Include cljunit as a dependency from clojars: (https://clojars.org/net.mikera/cljunit)
+Include cljunit as a dependency from clojars:
 
-Then you should extend one of the cljunit classes to allow JUnit to test your Clojure files.
+[![Clojars Project](http://clojars.org/net.mikera/cljunit/latest-version.svg)](http://clojars.org/net.mikera/cljunit)
+
+Then you should extend one of the cljunit classes to create a JUnit test suite to test your Clojure files.
 
 Examples below:
 
