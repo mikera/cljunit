@@ -34,12 +34,12 @@
 		<dependency>
 			<groupId>bultitude</groupId>
 			<artifactId>bultitude</artifactId>
-			<version>0.2.6</version>
+			<version>0.2.8</version>
 		</dependency>
 		<dependency>
 			<groupId>org.clojure</groupId>
 			<artifactId>clojure</artifactId>
-			<version>1.7.0-beta3</version>
+			<version>1.8.0</version>
 		</dependency>
 	</dependencies>
 </project>
