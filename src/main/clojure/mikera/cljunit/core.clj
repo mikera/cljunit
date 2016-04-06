@@ -10,7 +10,9 @@
 (def ^:dynamic *reports* nil)
 
 (defn assertion-message [m]
-  (str "Assertion failed: {:expected " (:expected m) " :actual " (:actual m) "}"
+  (str "Assertion failed: {:expected " (:expected m) 
+                           " :actual " (:actual m) 
+                           (when (:message m) (str " :message " (:message m))) "}"
        " <" (:file m) ":" (:line m) ">"))
 
 (defn truncate-stacktrace [off-top]
