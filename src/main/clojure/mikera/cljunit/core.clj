@@ -65,18 +65,12 @@
 (defn get-test-var-names 
   "Gets the names of all vars for a given namespace name"
   ([ns-name]
-  (try
-    (require (symbol ns-name))
-    (vec (map
-           #(str (first %))
-           (filter
-             (fn [[k v]] (:test (meta v)))
-             (ns-interns (symbol ns-name)))))
-    (catch Throwable t
-      (binding [*out* *err*]
-        (println (str "Error attempting to get var names for namespace [" ns-name "]"))
-        (.printStackTrace t))
-      []))))
+  (require (symbol ns-name))
+  (vec (map
+         #(str (first %))
+         (filter
+           (fn [[k v]] (:test (meta v)))
+           (ns-interns (symbol ns-name)))))))
 
 ;; we need to exclude clojure.parallel, as loading it causes an error if ForkJoin framework not present
 (def DEFAULT-EXCLUDES
