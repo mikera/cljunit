@@ -20,12 +20,8 @@ public class VarTester {
 	@SuppressWarnings("unchecked")
 	public VarTester(String ns,String name) {
 		Clojure.require(ns);
-		testVar=RT.var(ns, name);
-		Map<Keyword,Object> meta = (Map<Keyword, Object>) Clojure.META.invoke(testVar);
-		String file = meta.get(FILE).toString();
-		String line = meta.get(LINE).toString();
-		
-		desc=Description.createSuiteDescription(name + "  <"+file+":"+line+">");		
+		testVar=RT.var(ns, name);		
+		desc=Description.createSuiteDescription(ns + '.' + name);		
 	}
 	
 	public void runTest(RunNotifier n) {
