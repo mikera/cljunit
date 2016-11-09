@@ -1,12 +1,9 @@
 package mikera.cljunit;
 
-import java.util.Map;
-
 import org.junit.runner.Description;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
 
-import clojure.lang.Keyword;
 import clojure.lang.RT;
 import clojure.lang.Var;
 
@@ -14,10 +11,9 @@ public class VarTester {
 	Var testVar;
 	Description desc;
 	
-	private static Keyword FILE= Keyword.intern("file");
-	private static Keyword LINE= Keyword.intern("line");
+	// private static Keyword FILE= Keyword.intern("file");
+	// private static Keyword LINE= Keyword.intern("line");
 	
-	@SuppressWarnings("unchecked")
 	public VarTester(String ns,String name) {
 		Clojure.require(ns);
 		testVar=RT.var(ns, name);		
