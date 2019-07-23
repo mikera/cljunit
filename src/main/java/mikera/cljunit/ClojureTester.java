@@ -10,14 +10,14 @@ class ClojureTester {
 	private Description desc;
 	public List<String> namespaces;
 	
-	public ArrayList<NamespaceTester> children=new ArrayList<NamespaceTester>();
+	public ArrayList<NamespaceTester> children = new ArrayList<NamespaceTester>();
 	
 	public ClojureTester(List<String> ns) {
-		this.namespaces=ns;
-		desc= Description.createSuiteDescription("Clojure Tests");
+		this.namespaces = ns;
+		desc =  Description.createSuiteDescription("ClojureCore Tests");
 	
 		for (String s: namespaces) {
-			NamespaceTester nt=new NamespaceTester(s);
+			NamespaceTester nt = new NamespaceTester(s);
 			desc.addChild(nt.getDescription());
 			children.add(nt);
 		}

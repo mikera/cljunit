@@ -13,7 +13,7 @@
        :primitive? (.isPrimitive (.getJavaClass expr-ast))})))
 
 (defn expression-info
-  "Uses the Clojure compiler to analyze the given s-expr.  Returns
+  "Uses the ClojureCore compiler to analyze the given s-expr.  Returns
   a map with keys :class and :primitive? indicating what the compiler
   concluded about the return value of the expression.  Returns nil if
   no type info can be determined at compile-time.

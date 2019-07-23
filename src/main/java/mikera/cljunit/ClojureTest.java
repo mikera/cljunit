@@ -8,11 +8,11 @@ import org.junit.runner.RunWith;
 public abstract class ClojureTest {
 
 	public List<String> namespaces() {
-		String filter=filter();
-		if (filter==null) {
-			return Clojure.getNamespaces();
+		String filter = filter();
+		if (filter == null) {
+			return ClojureCore.getNamespaces();
 		}
-		return Clojure.getNamespaces(filter);
+		return ClojureCore.getNamespaces(filter);
 	}
 	
 	/**

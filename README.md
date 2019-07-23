@@ -2,9 +2,9 @@
 
 JUnit test integration for Clojure.
 
-The purpose of cljunit is to provide a convenient way to write JUnit tests that test Clojure namespaces. This is
-very useful if, for example, you want to test Clojure code within a Java IDE like Eclipse that has integrated
-JUnit testing facilities.
+The purpose of cljunit is to provide a convenient way to write JUnit tests that test Clojure namespaces. 
+This is very useful if, for example, you want to test Clojure code within 
+a Java IDE like Eclipse that has integrated JUnit testing facilities.
 
 [![Build Status](https://secure.travis-ci.org/mikera/cljunit.png?branch=master)](https://travis-ci.org/mikera/cljunit)
 
@@ -16,10 +16,12 @@ Include cljunit as a dependency from clojars:
 
 Then you should extend one of the cljunit classes to create a JUnit test suite to test your Clojure files.
 
-And that's it: you should now have your Clojure tests nicely wrapped up in JUnit test suites. These have been tested to work in the following situations:
+And that's it: you should now have your Clojure tests nicely wrapped up in JUnit test suites. 
+These have been tested to work in the following situations:
 
  - Running JUnit tests with Eclipse (Run / Run As... / JUnit Test)
- - Running JUnit tests with Maven (you don't even need the `clojure-maven-plugin` since the regular Maven configuration will automatically run JUnit tests)
+ - Running JUnit tests with Maven (you don't even need the `clojure-maven-plugin` 
+   since the regular Maven configuration will automatically run JUnit tests)
 
 Examples below:
 

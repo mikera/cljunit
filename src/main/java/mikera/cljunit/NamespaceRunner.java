@@ -14,7 +14,7 @@ public class NamespaceRunner extends ParentRunner<VarTester> {
 	public NamespaceRunner(Class<NamespaceTest> testClass) throws InitializationError, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		super(testClass);
 		
-		namespaceTester=new NamespaceTester(testClass.newInstance().namespace());
+		namespaceTester = new NamespaceTester(testClass.newInstance().namespace());
 	}
 
 	@Override

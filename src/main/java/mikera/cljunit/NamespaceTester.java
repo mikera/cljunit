@@ -10,15 +10,15 @@ class NamespaceTester {
 	public Description d;
 	public String namespace;
 	
-	public ArrayList<VarTester> children=new ArrayList<VarTester>();
+	public ArrayList<VarTester> children = new ArrayList<VarTester>();
 	
 	public NamespaceTester(String ns) {
-		this.namespace=ns;
-		d= Description.createSuiteDescription(namespace);
-		Collection<String> testVars=Clojure.getTestVars(namespace);
+		this.namespace = ns;
+		d = Description.createSuiteDescription(namespace);
+		Collection<String> testVars = ClojureCore.getTestVars(namespace);
 		
 		for (String v:testVars) {
-			VarTester vt=new VarTester(namespace,v);
+			VarTester vt = new VarTester(namespace,v);
 			d.addChild(vt.getDescription());
 			children.add(vt);
 		}

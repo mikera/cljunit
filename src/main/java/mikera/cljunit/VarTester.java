@@ -11,20 +11,20 @@ public class VarTester {
 	Var testVar;
 	Description desc;
 	
-	// private static Keyword FILE= Keyword.intern("file");
-	// private static Keyword LINE= Keyword.intern("line");
+	// private static Keyword FILE =  Keyword.intern("file");
+	// private static Keyword LINE =  Keyword.intern("line");
 	
 	public VarTester(String ns,String name) {
-		Clojure.require(ns);
-		testVar=RT.var(ns, name);		
-		desc=Description.createSuiteDescription(ns + '.' + name);		
+		ClojureCore.require(ns);
+		testVar = RT.var(ns, name);		
+		desc = Description.createSuiteDescription(ns + '.' + name);		
 	}
 	
 	public void runTest(RunNotifier n) {
 		n.fireTestStarted(getDescription());
 		
 		try {
-			Clojure.invokeTest(testVar);
+			ClojureCore.invokeTest(testVar);
 			n.fireTestFinished(getDescription());
 		} catch (Throwable t) {
 			n.fireTestFailure(new Failure(getDescription(), t));
