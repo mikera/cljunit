@@ -99,4 +99,9 @@ tasks {
     compileTestJava {
         options.encoding = "UTF-8"
     }
+
+    wrapper {
+        gradleVersion = "5.5.1"
+        distributionType = Wrapper.DistributionType.ALL
+    }
 }

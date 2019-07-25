@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22281a92-bf43-4aea-88eb-a91a6144d826" name="Default Changelist" comment="ported from maven to gradle, updated dependencies">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/cljunit.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/cljunit.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/cljunit.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/cljunit.test.iml" afterDir="false" />
+    <list default="true" id="22281a92-bf43-4aea-88eb-a91a6144d826" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_github_classgraph_classgraph_4_8_43.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/test/mikera/cljunit/core.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cljunit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cljunit.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mikera/cljunit/ClojureCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mikera/cljunit/ClojureCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -191,8 +193,16 @@
       <updated>1563914720129</updated>
       <workItem from="1563914727818" duration="13517000" />
       <workItem from="1564067285253" duration="614000" />
-      <workItem from="1564068407413" duration="1623000" />
+      <workItem from="1564068407413" duration="2207000" />
     </task>
+    <task id="LOCAL-00001" summary="ported from maven to gradle, updated dependencies">
+      <created>1564070088775</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1564070088775</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
