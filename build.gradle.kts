@@ -33,6 +33,8 @@ dependencies {
     implementation(group="org.apache.logging.log4j", name="log4j-api", version="2.12.0")
     implementation(group="org.apache.logging.log4j", name="log4j-core", version="2.12.0")
 
+    implementation(group="io.github.classgraph", name="classgraph", version="4.8.43")
+
 }
 
 group = "net.mikera"
@@ -45,8 +47,7 @@ java {
 sourceSets {
     test {
         resources {
-            // setSrcDirs(listOf("src/test/clojure"))
-            srcDir("src/test/clojure")
+            setSrcDirs(listOf("src/test/clojure", "src/main/clojure"))
         }
     }
 }
