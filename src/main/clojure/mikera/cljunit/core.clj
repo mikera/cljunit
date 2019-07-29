@@ -1,7 +1,8 @@
 (ns mikera.cljunit.core
   (:import [org.junit.runner.notification RunNotifier Failure])
   (:import org.junit.runner.Description)
-  (:require [bultitude.core :as b])
+  ;; (:require [bultitude.core :as b])
+  (:require [clojure.tools.namespace :as ctns]) 
   (:use clojure.test))
 
 (set! *warn-on-reflection* true)
@@ -79,11 +80,16 @@
 (defn get-namespace-symbols 
   "Gets the symbols defining namespaces on the classpath, subject to options map"
   ([options]
-    (let [prefix (or (:prefix options) "")
+    (let [prefix ^String (or (:prefix options) "")
           exclude-list (or (:exludes options) DEFAULT-EXCLUDES)
           exclude-set (into #{} exclude-list)
-          nms (b/namespaces-on-classpath :prefix prefix)
-          nms (filter #(not (exclude-set (name %))) nms)]
+          nms (ctns/find-namespaces-on-classpath)
+          nms (filter (fn [nsym] 
+                        (let [nsname ^String (name nsym)]
+                          (and
+                            (not (exclude-set nsname))
+                            (.startsWith nsname prefix)))) 
+                      nms)]
       nms)))
 
 (defn get-test-namespace-names 

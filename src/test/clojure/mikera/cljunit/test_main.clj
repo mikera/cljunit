@@ -1,15 +1,15 @@
 (ns mikera.cljunit.test-main
   (:use clojure.test)
   (:use mikera.cljunit.core)
-  (:require [bultitude.core :as b]))
+  (:require [clojure.tools.namespace :as ctns]))
 
 (deftest test-core
   (testing "Core"
     (is (= 1 1))))
 
-(deftest test-bultitude
+(deftest test-find-namespaces
   (testing "Core"
-    (let [nms (b/namespaces-on-classpath)
+    (let [nms (ctns/find-namespaces-on-classpath)
           nmset (into #{} (map str nms))]
       ;; (println nms)
       ;;(is (nmset "mikera.cljunit.core"))
