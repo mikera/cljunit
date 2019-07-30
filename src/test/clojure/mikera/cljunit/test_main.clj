@@ -13,7 +13,7 @@
   (testing "Namespace lookup using tools.namespace"
     (let [nms (ctnf/find-namespaces (jcp/classpath))
           nmset (into #{} (map str nms))]
-      (is (nmset "mikera.cljunit.core"))
+      (is (contains? nmset "mikera.cljunit.core"))
     )))
 
 (deftest test-namespaces
@@ -21,8 +21,8 @@
     (let [nms (get-test-namespace-names)
           nmset (into #{} nms)]
       ;; (println "NMS=" nms) 
-      (is (nmset "mikera.cljunit.core"))
-      (is (nmset "clojure.core"))
+      (is (contains? nmset "mikera.cljunit.core"))
+      (is (contains? nmset "clojure.core"))
       )))
 
 (deftest failing-assertion
