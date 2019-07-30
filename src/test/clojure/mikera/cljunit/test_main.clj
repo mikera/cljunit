@@ -1,18 +1,20 @@
 (ns mikera.cljunit.test-main
   (:use clojure.test)
   (:use mikera.cljunit.core)
-  (:require [clojure.tools.namespace :as ctns]))
-
+  (:require [clojure.tools.namespace :as ctns])
+  (:require [clojure.tools.namespace.find :as ctnf])
+  (:require [clojure.java.classpath :as jcp]))
+;
 (deftest test-core
   (testing "Core"
     (is (= 1 1))))
 
 (deftest test-find-namespaces
   (testing "Core"
-    (let [nms (ctns/find-namespaces-on-classpath)
+    (let [nms (ctnf/find-namespaces (jcp/classpath))
           nmset (into #{} (map str nms))]
-      ;; (println nms)
-      ;;(is (nmset "mikera.cljunit.core"))
+      ; (println "NMS=" nms)
+      (is (nmset "mikera.cljunit.core"))
     )))
 
 (deftest test-namespaces

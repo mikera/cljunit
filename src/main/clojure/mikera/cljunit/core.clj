@@ -3,6 +3,8 @@
   (:import org.junit.runner.Description)
   ;; (:require [bultitude.core :as b])
   (:require [clojure.tools.namespace :as ctns]) 
+  (:require [clojure.tools.namespace.find :as ctnf])
+  (:require [clojure.java.classpath :as jcp])
   (:use clojure.test))
 
 (set! *warn-on-reflection* true)
@@ -78,18 +80,22 @@
   ["clojure.parallel"])
 
 (defn get-namespace-symbols 
-  "Gets the symbols defining namespaces on the classpath, subject to options map"
+  "Gets the symbols defining namespaces on the classpath, subject to options map.
+
+   Options map may include:
+     :prefix   - only include namespaces which start with the given prefix
+     :excludes - exclude the list of specified namespaces (exact string names or symbols)"
   ([options]
     (let [prefix ^String (or (:prefix options) "")
-          exclude-list (or (:exludes options) DEFAULT-EXCLUDES)
-          exclude-set (into #{} exclude-list)
-          nms (ctns/find-namespaces-on-classpath)
+          exclude-list (or (:excludes options) DEFAULT-EXCLUDES)
+          exclude-set (into #{} (map name exclude-list))
+          nms (ctnf/find-namespaces (jcp/classpath))
           nms (filter (fn [nsym] 
-                        (let [nsname ^String (name nsym)]
-                          (and
-                            (not (exclude-set nsname))
-                            (.startsWith nsname prefix)))) 
-                      nms)]
+                              (let [nsname ^String (name nsym)]
+                                (and
+                                  (not (exclude-set nsname))
+                                  (.startsWith nsname prefix)))) 
+                            nms)]
       nms)))
 
 (defn get-test-namespace-names 
