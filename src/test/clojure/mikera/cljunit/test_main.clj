@@ -4,25 +4,25 @@
   (:require [clojure.tools.namespace :as ctns])
   (:require [clojure.tools.namespace.find :as ctnf])
   (:require [clojure.java.classpath :as jcp]))
-;
+
 (deftest test-core
-  (testing "Core"
+  (testing "Trivial test"
     (is (= 1 1))))
 
 (deftest test-find-namespaces
-  (testing "Core"
+  (testing "Namespace lookup using tools.namespace"
     (let [nms (ctnf/find-namespaces (jcp/classpath))
           nmset (into #{} (map str nms))]
-      ; (println "NMS=" nms)
       (is (nmset "mikera.cljunit.core"))
     )))
 
 (deftest test-namespaces
-  (testing "Core"
+  (testing "Getting all test namespace names"
     (let [nms (get-test-namespace-names)
           nmset (into #{} nms)]
-      ;; (println nms)
-      ;;(is (nmset "mikera.cljunit.core"))
+      ;; (println "NMS=" nms) 
+      (is (nmset "mikera.cljunit.core"))
+      (is (nmset "clojure.core"))
       )))
 
 (deftest failing-assertion
