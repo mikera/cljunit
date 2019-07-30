@@ -8,8 +8,12 @@ import org.junit.runner.RunWith;
 public abstract class ClojureTest {
 
 	/**
-	 * Gets a list of namespaces for testing
-	 * @return
+	 * Returns a list of namespaces for testing. 
+	 * 
+	 * Subclasses may override this to provide a specific list of namespaces to test. The default is to 
+	 * get all namespaces which start with the String returned by the `filter` method in this class.
+	 * 
+	 * @return A list of strings giving the names of Clojure namespaces to test, in the form "my.thing.foo"
 	 */
 	public List<String> namespaces() {
 		String filter=filter();
@@ -21,7 +25,8 @@ public abstract class ClojureTest {
 	
 	/**
 	 * Specifies a prefix filter for namespaces to test, e.g. "my.organisation"
-	 * @return
+	 * 
+	 * @return A prefix string with which to filter namespaces, or null to match all namespaces.
 	 */
 	public String filter() {
 		return null;
