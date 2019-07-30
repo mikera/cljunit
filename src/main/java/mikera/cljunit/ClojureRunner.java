@@ -13,7 +13,15 @@ public class ClojureRunner extends ParentRunner<NamespaceTester> {
 	public ClojureRunner(Class<ClojureTest> testClass) throws InitializationError, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		super(testClass);
 		
-		clojureTester=new ClojureTester(testClass.newInstance().namespaces());
+		try {
+			clojureTester=new ClojureTester(testClass.getConstructor().newInstance().namespaces());
+		}
+		catch (NoSuchMethodException e) {
+			throw new InstantiationException("Unable to get nullary constructor for test class: "+testClass.getCanonicalName());
+		}
+		catch (SecurityException e) {
+			throw new InitializationError(e);
+		}
 	}
 
 	@Override

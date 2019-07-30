@@ -7,6 +7,10 @@ import org.junit.runner.RunWith;
 @RunWith(ClojureRunner.class)
 public abstract class ClojureTest {
 
+	/**
+	 * Gets a list of namespaces for testing
+	 * @return
+	 */
 	public List<String> namespaces() {
 		String filter=filter();
 		if (filter==null) {
@@ -16,7 +20,7 @@ public abstract class ClojureTest {
 	}
 	
 	/**
-	 * Specifies a prefix for namespaces to test, e.g. "my.organisation"
+	 * Specifies a prefix filter for namespaces to test, e.g. "my.organisation"
 	 * @return
 	 */
 	public String filter() {

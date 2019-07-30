@@ -11,6 +11,7 @@ import org.junit.runners.model.InitializationError;
 public class NamespaceRunner extends ParentRunner<VarTester> {
 	NamespaceTester namespaceTester;
 	
+	@SuppressWarnings("deprecation")
 	public NamespaceRunner(Class<NamespaceTest> testClass) throws InitializationError, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		super(testClass);
 		
