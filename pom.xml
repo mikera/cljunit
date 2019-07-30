@@ -6,14 +6,9 @@
 	<groupId>net.mikera</groupId>
 	<version>0.6.1-SNAPSHOT</version>
 	<description>JUnit wrapper for Clojure test code</description>
-
-	<parent>
-		<groupId>net.mikera</groupId>
-		<artifactId>clojure-pom</artifactId>
-		<version>0.6.0</version>
-	</parent>
 	
 	<properties>
+		<java.version>1.8</java.version>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
@@ -53,4 +48,26 @@
 			<version>1.10.0</version>
 		</dependency>
 	</dependencies>
+	
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/clojure</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+
+		<testResources>
+			<testResource>
+				<directory>src/test/clojure</directory>
+			</testResource>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
+
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+	</build>
 </project>
