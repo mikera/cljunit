@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>cljunit</artifactId>
 	<groupId>net.mikera</groupId>
-	<version>0.7.0</version>
+	<version>0.7.1-SNAPSHOT</version>
 	<description>JUnit wrapper for Clojure test code</description>
 
 	<properties>
